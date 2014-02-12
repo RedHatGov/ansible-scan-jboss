@@ -27,7 +27,7 @@ pushd ${WorkDir} 2>&1 > /dev/null
   # release-name ':' version-string [version-string [version-string ... ]]
   #
   # where version-string refers to the jboss-modules.jar version
-  # they're can be multiple versions if jboss-modules.jar was patched
+  # there can be multiple versions if jboss-modules.jar was patched
   #
   cat > ${ClassificationFile} <<EOF1
 JBossAS 7.1.1: 1.1.1.GA
