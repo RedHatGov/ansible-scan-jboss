@@ -138,7 +138,6 @@ EOF1
 popd 2>&1 > /dev/null
 
 echo -n "hostname=`hostname` "
-echo -n "cores=`grep 'core id' /proc/cpuinfo | sort -u | wc -l | \
-         sed 's/^  *//g'` "
+echo -n "cores=`grep 'cpu cores' /proc/cpuinfo | awk '{s+=$4} END {print s}'` "
 echo "release=\"${RELEASE_LIST}\" changed=False"
 exit 0
