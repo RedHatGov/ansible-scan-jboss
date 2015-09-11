@@ -8,6 +8,7 @@
 # then extract the version from the pom.properties and MANIFEST.MF,
 # respectively, to determine which distribution contained the jar
 #
+# NB:  This script is up to date through EAP 6.4 CP02 and WildFly 8.0.0
 
 # abort if error
 set -e
@@ -15,11 +16,14 @@ set -e
 # default arguments for the scanning module
 WorkDir=/tmp
 ClassificationFile=jboss-classifier.txt
-SearchRoot=/
+SearchRoot=/Users/rlucente/demo/eap-test
 
 # get overrides for the above arguments from ansible
 # this is potentially dangerous as arbitrary command execution can occur
-source ${1}
+if [ $# -gt 0 ]
+then
+  source ${1}
+fi
 
 # switch to scratch directory
 pushd ${WorkDir} 2>&1 > /dev/null
@@ -58,19 +62,25 @@ EAP 6.0.1: 1.1.3.GA-redhat-1
 EAP 6.1.0: 1.2.0.Final-redhat-1
 EAP 6.1.1: 1.2.2.Final-redhat-1
 EAP 6.2: 1.3.0.Final-redhat-2 1.3.3.Final-redhat-1
+EAP 6.3: 1.3.3.Final-redhat-1 1.3.4.Final-redhat-1 1.3.5.Final-redhat-1
+EAP 6.4: 1.3.6.Final-redhat-1 
 EOF1
 
   unset RELEASE
   
-  # find every occurrence of the modules jar in the filesystem (excluding redundant copies from patching)
-  for modjar in `find ${SearchRoot} -type f -name 'jboss-modules.jar' | grep -v '\.installation/patches'`
+  # find every occurrence of the modules jar in the filesystem (excluding
+  # redundant copies from patching)
+  for jar in `find ${SearchRoot} -type f -name 'jboss-modules.jar' | \
+                 grep -v '\.installation/patches'`
   do
-    jar xf ${modjar} META-INF/maven/org.jboss.modules/jboss-modules/pom.properties
-    VERSION=`grep version META-INF/maven/org.jboss.modules/jboss-modules/pom.properties | sed 's/version=//g'`
+    MODDIR="META-INF/maven/org.jboss.modules/jboss-modules"
+    jar xf ${jar} ${MODDIR}/pom.properties
+    VERSION=`grep version ${MODDIR}/pom.properties | sed 's/version=//g'`
 
     if [ ! -z "${VERSION}" ]
     then
-      FOUND=`grep ${VERSION} ${ClassificationFile} | cut -d':' -f1`
+      FOUND=`grep ${VERSION} ${ClassificationFile} | cut -d':' -f1 | \
+             tr '\n' ',' | sed 's/,/, /g' | sed 's/, $//g'`
 
       if [ -z "${FOUND}" ]
       then
@@ -92,11 +102,13 @@ EOF1
   for runjar in `find ${SearchRoot} -type f -name 'run.jar'`
   do
     jar xf ${runjar} META-INF/MANIFEST.MF
-    VERSION=`grep Implementation-Version META-INF/MANIFEST.MF | sed 's/..*SVNTag.//g' | cut -d' ' -f1`
+    VERSION=`grep Implementation-Version META-INF/MANIFEST.MF | \
+             sed 's/..*SVNTag.//g' | cut -d' ' -f1`
 
     if [ ! -z "${VERSION}" ]
     then
-      FOUND=`grep ${VERSION} ${ClassificationFile} | cut -d':' -f1`
+      FOUND=`grep ${VERSION} ${ClassificationFile} | cut -d':' -f1 | \
+             tr '\n' ',' | sed 's/,/, /g' | sed 's/, $//g'`
 
       if [ -z "${FOUND}" ]
       then
@@ -119,6 +131,7 @@ EOF1
 popd 2>&1 > /dev/null
 
 echo -n "hostname=`hostname` "
-echo -n "cores=`grep 'core id' /proc/cpuinfo | sort -u | wc -l` "
+echo -n "cores=`grep 'core id' /proc/cpuinfo | sort -u | wc -l | \
+         sed 's/^  *//g'` "
 echo "release=\"${RELEASE}\" changed=False"
 exit 0
