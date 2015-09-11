@@ -8,15 +8,15 @@
 # then extract the version from the pom.properties and MANIFEST.MF,
 # respectively, to determine which distribution contained the jar
 #
-# NB:  This script is up to date through EAP 6.4 CP03 and WildFly 8.0.0
+# NB:  This script is up to date through EAP 6.4 CP03 and WildFly 10.0.0.Beta2
 
 # abort if error
 set -e
 
 # default arguments for the scanning module
 WorkDir=/tmp
-ClassificationFile=jboss-classifier.txt
-SearchRoot=/Users/rlucente/demo/eap-test
+ClassificationFile=jboss-classifier.txt.$$
+SearchRoot=/
 
 # get overrides for the above arguments from ansible
 # this is potentially dangerous as arbitrary command execution can occur
@@ -31,7 +31,7 @@ pushd ${WorkDir} 2>&1 > /dev/null
   # populate the classifier file to match the jboss release
   #
   # this file is simply formatted as:
-  # release-name ':' version-string [version-string [version-string ... ]]
+  # release-name ':' version-string
   #
   # where version-string refers to the jboss-modules.jar version or the
   # Implementation-Version in the run.jar MANIFEST.MF file.
@@ -39,61 +39,71 @@ pushd ${WorkDir} 2>&1 > /dev/null
   # there can be multiple versions if jboss-modules.jar was patched
   #
   cat > ${ClassificationFile} <<EOF1
-JBossAS 5.0.0: JBoss_5_0_0_GA
-JBossAS 5.0.1: JBoss_5_0_1_GA
-JBossAS 5.1.0: JBoss_5_1_0_GA
-JBossAS 6.0.0: JBoss_6.0.0.Final
-JBossAS 6.1.0: JBoss_6.1.0.Final
-JBossAS 7.0.0: 1.0.1.GA
-JBossAS 7.0.1: 1.0.1.GA
-JBossAS 7.0.2: 1.0.2.GA
-JBossAS 7.1.0: 1.1.1.GA
-JBossAS 7.1.1: 1.1.1.GA
-JBossAS 7.2.0: 1.2.0.CR1
-WildFly 8.0.0: 1.2.0.Final 1.2.2.Final 1.2.4.Final 1.3.0.Beta3 1.3.0.Final
-EAP 5.0.0: JBPAPP_5_0_0_GA
-EAP 5.0.1: JBPAPP_5_0_1
-EAP 5.1.0: JBPAPP_5_1_0
-EAP 5.1.1: JBPAPP_5_1_1	
-EAP 5.1.2: JBPAPP_5_1_2
-EAP 5.2.0: JBPAPP_5_2_0
-EAP 6.0.0: 1.1.2.GA-redhat-1
-EAP 6.0.1: 1.1.3.GA-redhat-1
-EAP 6.1.0: 1.2.0.Final-redhat-1
-EAP 6.1.1: 1.2.2.Final-redhat-1
-EAP 6.2: 1.3.0.Final-redhat-2 1.3.3.Final-redhat-1
-EAP 6.3: 1.3.3.Final-redhat-1 1.3.4.Final-redhat-1 1.3.5.Final-redhat-1
-EAP 6.4: 1.3.6.Final-redhat-1 1.3.7.Final-redhat-1
+JBossAS-5: JBoss_5_0_0_GA
+JBossAS-5: JBoss_5_0_1_GA
+JBossAS-5: JBoss_5_1_0_GA
+JBossAS-6: JBoss_6.0.0.Final
+JBossAS-6: JBoss_6.1.0.Final
+JBossAS-7: 1.0.1.GA
+JBossAS-7: 1.0.2.GA
+JBossAS-7: 1.1.1.GA
+JBossAS-7: 1.2.0.CR1
+WildFly-8: 1.2.0.Final
+WildFly-8: 1.2.2.Final
+WildFly-8: 1.2.4.Final
+WildFly-8: 1.3.0.Beta3
+WildFly-8: 1.3.0.Final
+WildFly-8: 1.3.3.Final
+WildFly-9: 1.3.4.Final
+WildFly-9: 1.4.2.Final
+WildFly-9: 1.4.3.Final
+WildFly-10: 1.4.3.Final
+EAP-5.0.0: JBPAPP_5_0_0_GA
+EAP-5.0.1: JBPAPP_5_0_1
+EAP-5.1.0: JBPAPP_5_1_0
+EAP-5.1.1: JBPAPP_5_1_1	
+EAP-5.1.2: JBPAPP_5_1_2
+EAP-5.2.0: JBPAPP_5_2_0
+EAP-6.0.0: 1.1.2.GA-redhat-1
+EAP-6.0.1: 1.1.3.GA-redhat-1
+EAP-6.1.0: 1.2.0.Final-redhat-1
+EAP-6.1.1: 1.2.2.Final-redhat-1
+EAP-6.2: 1.3.0.Final-redhat-2
+EAP-6.2: 1.3.3.Final-redhat-1
+EAP-6.3: 1.3.3.Final-redhat-1
+EAP-6.3: 1.3.4.Final-redhat-1
+EAP-6.3: 1.3.5.Final-redhat-1
+EAP-6.4: 1.3.6.Final-redhat-1
+EAP-6.4: 1.3.7.Final-redhat-1
 EOF1
 
-  unset RELEASE
-  
+  RELEASE=${WorkDir}/release_list.$$
+  touch $RELEASE
+
+  MODDIR="META-INF/maven/org.jboss.modules/jboss-modules"
+
   # find every occurrence of the modules jar in the filesystem (excluding
   # redundant copies from patching)
   for jar in `find ${SearchRoot} -type f -name 'jboss-modules.jar' | \
                  grep -v '\.installation/patches'`
   do
-    MODDIR="META-INF/maven/org.jboss.modules/jboss-modules"
     jar xf ${jar} ${MODDIR}/pom.properties
     VERSION=`grep version ${MODDIR}/pom.properties | sed 's/version=//g'`
 
     if [ ! -z "${VERSION}" ]
     then
-      FOUND=`grep ${VERSION} ${ClassificationFile} | cut -d':' -f1 | \
-             tr '\n' ',' | sed 's/,/, /g' | sed 's/, $//g'`
+      FOUND=`grep ${VERSION}\$ ${ClassificationFile} | cut -d':' -f1`
 
       if [ -z "${FOUND}" ]
       then
-        FOUND="Unknown JBoss Release"
+        FOUND="Unknown-JBoss-Release"
       fi
 
-      if [ -z "${RELEASE}" ]
-      then
-        RELEASE="${FOUND}"
-      else
-        RELEASE="${RELEASE}, ${FOUND}"
-      fi
- 
+      for fnd in `echo $FOUND`
+      do
+        echo ${fnd} >> ${RELEASE}
+      done
+
       rm -fr META-INF
     fi
   done
@@ -107,31 +117,29 @@ EOF1
 
     if [ ! -z "${VERSION}" ]
     then
-      FOUND=`grep ${VERSION} ${ClassificationFile} | cut -d':' -f1 | \
-             tr '\n' ',' | sed 's/,/, /g' | sed 's/, $//g'`
+      FOUND=`grep ${VERSION}\$ ${ClassificationFile} | cut -d':' -f1`
 
       if [ -z "${FOUND}" ]
       then
-        FOUND="Unknown JBoss Release"
+        FOUND="Unknown-JBoss-Release"
       fi
 
-      if [ -z "${RELEASE}" ]
-      then
-        RELEASE="${FOUND}"
-      else
-        RELEASE="${RELEASE}, ${FOUND}"
-      fi
+      for fnd in `echo $FOUND`
+      do
+        echo ${fnd} >> ${RELEASE}
+      done
 
       rm -fr META-INF
     fi
   done
 
-  rm -f ${ClassificationFile}
+  RELEASE_LIST=`sort -u ${RELEASE} | tr '\n' ',' | sed 's/,/, /g' | sed 's/, $//g'`
+  rm -f ${ClassificationFile} ${RELEASE}
 
 popd 2>&1 > /dev/null
 
 echo -n "hostname=`hostname` "
 echo -n "cores=`grep 'core id' /proc/cpuinfo | sort -u | wc -l | \
          sed 's/^  *//g'` "
-echo "release=\"${RELEASE}\" changed=False"
+echo "release=\"${RELEASE_LIST}\" changed=False"
 exit 0
