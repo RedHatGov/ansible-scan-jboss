@@ -2,11 +2,15 @@
 
 import multiprocessing
 import os
+import re
+import shutil
 import socket
+import zipfile
 
-"""Scans for deployed JBoss instances by searching for the jboss-modules.jar
-and then extracting the pom.properties file from it. The installed JBoss
-instance is determined using the version property."""
+"""Scans for deployed JBoss instances by searching for the
+jboss-modules.jar and run.jar files and then extracting the
+pom.properties file and MANIFEST.MF, respectively. The installed
+JBoss instance is determined using the version property."""
 
 __author__ = 'Rich Lucente, Jason Callaway'
 __email__ = 'rlucente@redhat.com'
@@ -15,9 +19,8 @@ __version__ = '0.1'
 __status__ = 'alpha'
 
 work_dir = '/tmp'
-mod_dir = '/META-INF/maven/org.jboss.modules/jboss-modules'
-# Probably no need to search from /, can save time by being more specific.
 search_root = ['/etc', '/home', '/var', '/usr', '/opt']
+#search_root = ['/Users/rlucente/demo/eap-test']
 
 # This script finds and classifies JBoss AS instances by specific community and
 # enterprise releases.
@@ -67,39 +70,52 @@ classifications = {
     '1.3.7.Final-redhat-1': 'EAP-6.4'
 }
 
+mod_file = 'META-INF/maven/org.jboss.modules/jboss-modules/pom.properties'
+run_file = 'META-INF/MANIFEST.MF'
+
 found_versions = []
+
 for search_dir in search_root:
-    for filename in os.listdir(search_dir):
-        # Find every occurrence of the modules jar in the search roots
-        # (excluding redundant copies from patching).
-        if 'jboss-modules.jar' and not '.installation/patches' in filename:
-            os.system('jar xf ' + filename + ' ' + work_dir)
-            pom_file = open(work_dir + mod_dir + '/pom.properties', 'r')
-            for line in pom_file:
-                if 'version' in line:
-                    version = line.split('=')[1]
-                    if version in classifications:
-                        found_versions.append(classifications[version])
-                    else:
-                        found_versions.append('Unknown-JBoss-Release: ' +
-                                              version)
-            pom_file.close()
-            os.system('rm -Rf ' + work_dir + '/META-INF')
+    for dirpath, dirs, files in os.walk(search_dir):
+        for name in files:
+            filename = os.path.join(dirpath, name)
 
-        # Find every occurrence of the run jar in the search roots.
-        if 'run.jar' in filename:
-            os.system('jar xf ' + filename + ' ' + work_dir)
-            manifest_file = open(work_dir + '/META-INF/MANIFEST.MF', 'r')
-            for line in manifest_file:
-                if 'Implementation-Version' in line:
-                    version = line.split(' ')[1]
-                    version.replace('..*SVNTag.', '')
-                    if version in classifications:
-                        found_versions.append(classifications[version])
-                    else:
-                        found_versions.append('Unknown-JBoss-Release: ' +
-                                              version)
+            # Find every occurrence of the modules jar in the search roots
+            # (excluding redundant copies from patching).
+            if 'jboss-modules.jar' in filename and not '.installation/patches' in filename:
+                zf = zipfile.ZipFile(filename)
+                zf.extract(mod_file, work_dir)
+                pom_file = open(work_dir + '/' + mod_file, 'r')
+                zf.close()
 
-print 'hostname=' + socket.gethostname()
-print 'cores=' + str(multiprocessing.cpu_count())
-print 'release=' + sorted(found_versions)
+                for line in pom_file:
+                    if 'version' in line:
+                        version = line.split('=')[1]
+                        version = version.splitlines()[0]
+                        if version in classifications:
+                            found_versions.append(classifications[version])
+                        else:
+                            found_versions.append('Unknown-JBoss-Release: ' + version)
+                pom_file.close()
+                shutil.rmtree(work_dir + '/META-INF')
+    
+            # Find every occurrence of the run jar in the search roots.
+            if 'run.jar' in filename:
+                zf = zipfile.ZipFile(filename)
+                zf.extract(run_file, work_dir)
+                manifest_file = open(work_dir + '/' + run_file, 'r')
+                zf.close()
+
+                for line in manifest_file:
+                    if 'Implementation-Version' in line:
+                        line = re.sub('..*SVNTag.', '', line)
+                        version = line.split(' ')[0]
+                        if version in classifications:
+                            found_versions.append(classifications[version])
+                        else:
+                            found_versions.append('Unknown-JBoss-Release: ' + version)
+
+print('hostname=' + socket.gethostname()),
+print('cores=' + str(multiprocessing.cpu_count())),
+print('release='),
+print(sorted(set(found_versions)))
