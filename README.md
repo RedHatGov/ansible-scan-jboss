@@ -16,7 +16,8 @@ NB:  This script is up to date through EAP 6.4 CP03 and WildFly 10.0.0.Beta2.
 
 This has now been updated with a python script in addition to a
 bash script.  The python script correctly works on both Linux and
-Mac OSX, but I have not been able to test it with Microsoft Windows.
-I now need to review ["Ansible Configuration Management" book](http://www.packtpub.com/ansible-configuration-management/book) to make
-sure the python implementation conforms with its expectations.
+Mac OSX, but it has not yet been tested with Microsoft Windows.
+Also, the python script needs to be reviewed to ensure it matches
+ansible expectations.  The ["Ansible Configuration Management" book](http://www.packtpub.com/ansible-configuration-management/book)
+is a good resource for this.
 
