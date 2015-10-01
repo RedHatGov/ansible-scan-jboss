@@ -32,6 +32,16 @@ search_root = ['/etc', '/home', '/var', '/usr', '/opt']
 # NB:  This script is up to date through EAP 6.4 CP03 and WildFly 10.0.0.Beta2.
 
 classifications = {
+    'JBoss_4_0_0': 'JBossAS-4',
+    'JBoss_4_0_1_SP1': 'JBossAS-4',
+    'JBoss_4_0_2': 'JBossAS-4',
+    'JBoss_4_0_3_SP1': 'JBossAS-4',
+    'JBoss_4_0_4_GA': 'JBossAS-4',
+    'Branch_4_0': 'JBossAS-4',
+    'JBoss_4_2_0_GA': 'JBossAS-4',
+    'JBoss_4_2_1_GA': 'JBossAS-4',
+    'JBoss_4_2_2_GA': 'JBossAS-4',
+    'JBoss_4_2_3_GA': 'JBossAS-4',
     'JBoss_5_0_0_GA': 'JBossAS-5',
     'JBoss_5_0_1_GA': 'JBossAS-5',
     'JBoss_5_1_0_GA': 'JBossAS-5',
@@ -51,6 +61,10 @@ classifications = {
     '1.4.2.Final': 'WildFly-9',
     #'1.4.3.Final': 'WildFly-9',
     '1.4.3.Final': 'WildFly-10',
+    'JBPAPP_4_2_0_GA': 'EAP-4.2',
+    'JBPAPP_4_2_0_GA_C': 'EAP-4.2',
+    'JBPAPP_4_3_0_GA': 'EAP-4.3',
+    'JBPAPP_4_3_0_GA_C': 'EAP-4.3',
     'JBPAPP_5_0_0_GA': 'EAP-5.0.0',
     'JBPAPP_5_0_1': 'EAP-5.0.1',
     'JBPAPP_5_1_0': 'EAP-5.1.0',
@@ -108,7 +122,8 @@ for search_dir in search_root:
 
                 for line in manifest_file:
                     if 'Implementation-Version' in line:
-                        line = re.sub('..*SVNTag.', '', line)
+                        line = re.sub('..*[CS]V[SN]Tag.', '', line)
+                        line = re.sub('[\r\n]', '', line)
                         version = line.split(' ')[0]
                         if version in classifications:
                             found_versions.append(classifications[version])
