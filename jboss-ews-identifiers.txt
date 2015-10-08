@@ -146,3 +146,50 @@ Server built:   Jul 21 2014 05:07:12
 Server version: Apache/2.2.26 (Win64)
 Server built:   Jul 21 2014 05:09:54
 
+./jws-3.0/httpd/sbin/httpd (jws-httpd-3.0.0-Beta-RHEL6-i386.zip)
+Server version: Apache/2.4.6 (Red Hat)
+Server built:   Mar 10 2015 10:27:32
+
+./jws-3.0/httpd/sbin/httpd (jws-httpd-3.0.0-Beta-RHEL6-x86_64.zip)
+Server version: Apache/2.4.6 (Red Hat)
+Server built:   Mar 10 2015 10:25:04
+
+./jws-3.0/httpd/sbin/httpd (jws-httpd-3.0.0-Beta-RHEL7-x86_64.zip)
+Server version: Apache/2.4.6 (Red Hat)
+Server built:   Mar 10 2015 10:15:20
+
+./jws-3.0/bin/httpd.exe (jws-httpd-3.0.0-Beta-win6.x86_64.zip)
+Server version: Apache/2.4.6 (Win64)
+Server built:   Mar 10 2015 04:59:02
+
+./jws-3.0/httpd/sbin/httpd (jws-httpd-3.0.0-RHEL6-i386.zip)
+Server version: Apache/2.4.6 (Red Hat)
+Server built:   Apr 14 2015 11:19:36
+
+./jws-3.0/httpd/sbin/httpd (jws-httpd-3.0.0-RHEL6-x86_64.zip)
+Server version: Apache/2.4.6 (Red Hat)
+Server built:   Apr 14 2015 11:19:21
+
+./jws-3.0/httpd/sbin/httpd (jws-httpd-3.0.0-RHEL7-x86_64.zip)
+Server version: Apache/2.4.6 (Red Hat)
+Server built:   Apr 14 2015 10:51:35
+
+./jws-3.0/bin/httpd.exe (jws-httpd-3.0.0-win6.x86_64.zip)
+Server version: Apache/2.4.6 (Win64)
+Server built:   Apr  7 2015 03:48:38
+
+./jws-3.0/httpd/sbin/httpd (jws-httpd-3.0.1-RHEL6-i386.zip)
+Server version: Apache/2.4.6 (Red Hat)
+Server built:   Apr 27 2015 13:02:03
+
+./jws-3.0/httpd/sbin/httpd (jws-httpd-3.0.1-RHEL6-x86_64.zip)
+Server version: Apache/2.4.6 (Red Hat)
+Server built:   Apr 27 2015 13:01:49
+
+./jws-3.0/httpd/sbin/httpd (jws-httpd-3.0.1-RHEL7-x86_64.zip)
+Server version: Apache/2.4.6 (Red Hat)
+Server built:   Apr 27 2015 12:45:02
+
+./jws-3.0/bin/httpd.exe (jws-httpd-3.0.1-win6.x86_64.zip)
+Server version: Apache/2.4.6 (Win64)
+Server built:   Aug 24 2015 09:55:54
