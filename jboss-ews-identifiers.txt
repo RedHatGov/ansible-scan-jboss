@@ -1,0 +1,148 @@
+./jboss-ews-1.0.0-RHEL4-i386/jboss-ews-1.0/httpd/sbin/httpd
+Server version: Apache/2.2.10 (Unix)
+Server built:   Mar 25 2009 01:43:04
+
+./jboss-ews-1.0.0-RHEL4-x86_64/jboss-ews-1.0/httpd/sbin/httpd
+Server version: Apache/2.2.10 (Unix)
+Server built:   Mar 25 2009 01:42:07
+
+./jboss-ews-1.0.0-RHEL5-i386/jboss-ews-1.0/httpd/sbin/httpd
+Server version: Apache/2.2.10 (Unix)
+Server built:   Feb 28 2009 21:14:10
+
+./jboss-ews-1.0.0-RHEL5-x86_64/jboss-ews-1.0/httpd/sbin/httpd
+Server version: Apache/2.2.10 (Unix)
+Server built:   Feb 28 2009 21:14:19
+
+./jboss-ews-1.0.1-RHEL4-i386/jboss-ews-1.0/httpd/sbin/httpd
+Server version: Apache/2.2.14 (Unix)
+Server built:   Feb 10 2010 10:06:49
+
+./jboss-ews-1.0.1-RHEL4-x86_64/jboss-ews-1.0/httpd/sbin/httpd
+Server version: Apache/2.2.14 (Unix)
+Server built:   Feb 10 2010 10:06:44
+
+./jboss-ews-1.0.1-RHEL5-i386/jboss-ews-1.0/httpd/sbin/httpd
+Server version: Apache/2.2.14 (Unix)
+Server built:   Jan 12 2010 13:37:07
+
+./jboss-ews-1.0.1-RHEL5-x86_64/jboss-ews-1.0/httpd/sbin/httpd
+Server version: Apache/2.2.14 (Unix)
+Server built:   Jan 12 2010 13:37:05
+
+./RHATews-1.0.1_0-windows32-i386/Red Hat/Enterprise Web Server/bin/httpd.exe
+Server version: Apache/2.2.14 (Win32)
+Server built:   Feb 12 2010 08:51:31
+
+./RHATews-1.0.1_0-windows64-x86_64/Red Hat/Enterprise Web Server/bin/httpd.exe
+Server version: Apache/2.2.14 (Win32)
+Server built:   Feb 12 2010 09:22:54
+
+./jboss-ews-1.0.2-RHEL4-i386/jboss-ews-1.0/httpd/sbin/httpd
+Server version: Apache/2.2.17 (Unix)
+Server built:   May 19 2011 13:10:46
+
+./jboss-ews-1.0.2-RHEL4-x86_64/jboss-ews-1.0/httpd/sbin/httpd
+Server version: Apache/2.2.17 (Unix)
+Server built:   May 19 2011 13:10:25
+
+./jboss-ews-1.0.2-RHEL5-i386/jboss-ews-1.0/httpd/sbin/httpd
+Server version: Apache/2.2.17 (Unix)
+Server built:   Apr 18 2011 11:00:52
+
+./jboss-ews-1.0.2-RHEL5-x86_64/jboss-ews-1.0/httpd/sbin/httpd
+Server version: Apache/2.2.17 (Unix)
+Server built:   Apr 18 2011 10:59:17
+
+./jboss-ews-1.0.2-RHEL6-i386/jboss-ews-1.0/httpd/sbin/httpd
+Server version: Apache/2.2.17 (Unix)
+Server built:   Apr 18 2011 10:59:44
+
+./jboss-ews-1.0.2-RHEL6-x86_64/jboss-ews-1.0/httpd/sbin/httpd
+Server version: Apache/2.2.17 (Unix)
+Server built:   Apr 18 2011 11:00:13
+
+./RHATews-1.0.2-windows32-i386/Red Hat/Enterprise Web Server/bin/httpd.exe
+Server version: Apache/2.2.17 (Win32)
+Server built:   Jun  2 2011 05:14:24
+
+./RHATews-1.0.2-windows64-x86_64/Red Hat/Enterprise Web Server/bin/httpd.exe
+Server version: Apache/2.2.17 (Win32)
+Server built:   Jun  2 2011 06:00:26
+
+./jboss-ews-httpd-2.0.0-RHEL5-i386/jboss-ews-2.0/httpd/sbin/httpd
+Server version: Apache/2.2.22 (Unix)
+Server built:   Oct 17 2012 11:45:45
+
+./jboss-ews-httpd-2.0.0-RHEL5-x86_64/jboss-ews-2.0/httpd/sbin/httpd
+Server version: Apache/2.2.22 (Unix)
+Server built:   Oct 17 2012 11:45:17
+
+./jboss-ews-httpd-2.0.0-RHEL6-i386/jboss-ews-2.0/httpd/sbin/httpd
+Server version: Apache/2.2.22 (Unix)
+Server built:   Oct 17 2012 11:49:43
+
+./jboss-ews-httpd-2.0.0-RHEL6-x86_64/jboss-ews-2.0/httpd/sbin/httpd
+Server version: Apache/2.2.22 (Unix)
+Server built:   Oct 17 2012 11:48:57
+
+./jboss-ews-httpd-2.0.0-win6.i686/jboss-ews-2.0/bin/httpd.exe
+Server version: Apache/2.2.22 (Win32)
+Server built:   Oct  9 2012 00:37:12
+
+./jboss-ews-httpd-2.0.0-win6.x86_64/jboss-ews-2.0/bin/httpd.exe
+Server version: Apache/2.2.22 (Win64)
+Server built:   Oct  9 2012 00:40:47
+
+./jboss-ews-httpd-2.0.1-RHEL5-i386/jboss-ews-2.0/httpd/sbin/httpd
+Server version: Apache/2.2.22 (Unix)
+Server built:   Jun 17 2013 10:51:50
+
+./jboss-ews-httpd-2.0.1-RHEL5-x86_64/jboss-ews-2.0/httpd/sbin/httpd
+Server version: Apache/2.2.22 (Unix)
+Server built:   Jun 17 2013 10:51:47
+
+./jboss-ews-httpd-2.0.1-RHEL6-i386/jboss-ews-2.0/httpd/sbin/httpd
+Server version: Apache/2.2.22 (Unix)
+Server built:   Jun 17 2013 11:02:27
+
+./jboss-ews-httpd-2.0.1-RHEL6-x86_64/jboss-ews-2.0/httpd/sbin/httpd
+Server version: Apache/2.2.22 (Unix)
+Server built:   Jun 17 2013 11:02:18
+
+./jboss-ews-httpd-2.0.1-win6.i686/jboss-ews-2.0/bin/httpd.exe
+Server version: Apache/2.2.22 (Win32)
+Server built:   Jun 20 2013 11:47:08
+
+./jboss-ews-httpd-2.0.1-win6.x86_64/jboss-ews-2.0/bin/httpd.exe
+Server version: Apache/2.2.22 (Win64)
+Server built:   Jun 20 2013 11:50:51
+
+./jboss-ews-httpd-2.1.0-RHEL5-i386/jboss-ews-2.1/httpd/sbin/httpd
+Server version: Apache/2.2.26 (Unix)
+Server built:   Jul 18 2014 10:38:47
+
+./jboss-ews-httpd-2.1.0-RHEL5-x86_64/jboss-ews-2.1/httpd/sbin/httpd
+Server version: Apache/2.2.26 (Unix)
+Server built:   Jul 18 2014 10:38:49
+
+./jboss-ews-httpd-2.1.0-RHEL6-i386/jboss-ews-2.1/httpd/sbin/httpd
+Server version: Apache/2.2.26 (Unix)
+Server built:   Jul 18 2014 10:26:20
+
+./jboss-ews-httpd-2.1.0-RHEL6-x86_64/jboss-ews-2.1/httpd/sbin/httpd
+Server version: Apache/2.2.26 (Unix)
+Server built:   Jul 18 2014 10:26:47
+
+./jboss-ews-httpd-2.1.0-RHEL7-x86_64/jboss-ews-2.1/httpd/sbin/httpd
+Server version: Apache/2.2.26 (Unix)
+Server built:   Jul 18 2014 10:03:28
+
+./jboss-ews-httpd-2.1.0-win6.i686/jboss-ews-2.1/bin/httpd.exe
+Server version: Apache/2.2.26 (Win32)
+Server built:   Jul 21 2014 05:07:12
+
+./jboss-ews-httpd-2.1.0-win6.x86_64/jboss-ews-2.1/bin/httpd.exe
+Server version: Apache/2.2.26 (Win64)
+Server built:   Jul 21 2014 05:09:54
+
