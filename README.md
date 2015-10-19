@@ -12,7 +12,7 @@ for the jboss-modules.jar and run.jar files and then extracts the
 version from the pom.properties and MANIFEST.MF, respectively, to
 determine which distribution contained the jar.
 
-NB:  This script is up to date through EAP 6.4 CP03 and WildFly 10.0.0.Beta2.
+NB:  This script is up to date through EAP 6.4 CP04 and WildFly 10.0.0.Beta2.
 
 This has now been updated with a python script in addition to a
 bash script.  The python script correctly works on both Linux and
