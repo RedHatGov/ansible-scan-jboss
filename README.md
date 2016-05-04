@@ -21,3 +21,5 @@ Also, the python script needs to be updated to match ansible
 expectations for a custom module, per chapter 10 in the ["Ansible:
 Up and Running" book](http://shop.oreilly.com/product/0636920035626.do).
 
+james martin (ansible.com) - lead ansible consultant
+
