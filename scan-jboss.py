@@ -62,6 +62,8 @@ classifications = {
     #'1.4.3.Final': 'WildFly-9',
     '1.4.3.Final': 'WildFly-10',
     '1.4.4.Final': 'WildFly-10',
+    '1.5.0.Final': 'WildFly-10',
+    '1.5.1.Final': 'WildFly-10',
     'JBPAPP_4_2_0_GA': 'EAP-4.2',
     'JBPAPP_4_2_0_GA_C': 'EAP-4.2',
     'JBPAPP_4_3_0_GA': 'EAP-4.3',
