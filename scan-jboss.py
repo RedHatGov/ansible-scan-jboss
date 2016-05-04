@@ -84,7 +84,8 @@ classifications = {
     '1.3.4.Final-redhat-1': 'EAP-6.3',
     '1.3.5.Final-redhat-1': 'EAP-6.3',
     '1.3.6.Final-redhat-1': 'EAP-6.4',
-    '1.3.7.Final-redhat-1': 'EAP-6.4'
+    '1.3.7.Final-redhat-1': 'EAP-6.4',
+    '1.4.4.Final-redhat-1': 'EAP-7.0'
 }
 
 mod_file = 'META-INF/maven/org.jboss.modules/jboss-modules/pom.properties'
