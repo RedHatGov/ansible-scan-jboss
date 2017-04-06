@@ -8,7 +8,7 @@
 # then extract the version from the pom.properties and MANIFEST.MF,
 # respectively, to determine which distribution contained the jar
 #
-# NB:  This script is up to date through EAP 7.0.0.Beta and WildFly 10.0.0.Final
+# NB:  This script is up to date through EAP 7.0.0.Beta and WildFly 11.0.0.Alpha1
 
 # abort if error
 set -e
@@ -73,6 +73,8 @@ WildFly-10: 1.4.3.Final
 WildFly-10: 1.4.4.Final
 WildFly-10: 1.5.0.Final
 WildFly-10: 1.5.1.Final
+WildFly-10: 1.5.2.Final
+WildFly-11: 1.6.0.Beta6
 EAP-4.2: JBPAPP_4_2_0_GA
 EAP-4.2: JBPAPP_4_2_0_GA_C
 EAP-4.3: JBPAPP_4_3_0_GA
