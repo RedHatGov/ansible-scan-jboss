@@ -30,7 +30,7 @@ search_root = ['/etc', '/home', '/var', '/usr', '/opt']
 # respectively, to determine which distribution contained the jar.
 #
 # NB:  This script is up to date through EAP 6.4 CP16, EAP 7.0 CP07,
-#      EAP 7.1 Beta, and WildFly 11.0.0.Beta1
+#      EAP 7.1 Beta, and WildFly 11.0.0.CR1
 
 classifications = {
     'JBoss_4_0_0': 'JBossAS-4',
@@ -68,6 +68,7 @@ classifications = {
     '1.5.2.Final': 'WildFly-10',
     '1.6.0.Beta6': 'WildFly-11',
     '1.6.0.CR2': 'WildFly-11',
+    '1.6.0.Final': 'WildFly-11',
     'JBPAPP_4_2_0_GA': 'EAP-4.2',
     'JBPAPP_4_2_0_GA_C': 'EAP-4.2',
     'JBPAPP_4_3_0_GA': 'EAP-4.3',
