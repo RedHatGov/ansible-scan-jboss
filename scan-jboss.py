@@ -29,7 +29,7 @@ search_root = ['/etc', '/home', '/var', '/usr', '/opt']
 # then extract the version from the pom.properties and MANIFEST.MF,
 # respectively, to determine which distribution contained the jar.
 #
-# NB:  This script is up to date through EAP 6.4 CP17, EAP 7.0 CP08,
+# NB:  This script is up to date through EAP 6.4 CP18, EAP 7.0 CP08,
 #      EAP 7.1 Beta, and WildFly 11.0.0.Final
 
 classifications = {
@@ -93,6 +93,7 @@ classifications = {
     '1.3.7.Final-redhat-1': 'EAP-6.4',
     '1.3.8.Final-redhat-1': 'EAP-6.4',
     '1.3.9.Final-redhat-1': 'EAP-6.4',
+    '1.3.10.Final-redhat-1': 'EAP-6.4',
     '1.4.4.Final-redhat-1': 'EAP-7.0',
     '1.5.1.Final-redhat-1': 'EAP-7.0',
     '1.5.3.Final-redhat-1': 'EAP-7.0',
