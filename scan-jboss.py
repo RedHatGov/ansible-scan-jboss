@@ -30,7 +30,7 @@ search_root = ['/etc', '/home', '/var', '/usr', '/opt']
 # respectively, to determine which distribution contained the jar.
 #
 # NB:  This script is up to date through EAP 6.4 CP18, EAP 7.0 CP08,
-#      EAP 7.1 Beta, and WildFly 11.0.0.Final
+#      EAP 7.1, and WildFly 11.0.0.Final
 
 classifications = {
     'JBoss_4_0_0': 'JBossAS-4',
@@ -99,7 +99,8 @@ classifications = {
     '1.5.3.Final-redhat-1': 'EAP-7.0',
     '1.5.4.Final-redhat-1': 'EAP-7.0',
     '1.6.0.Beta6-redhat-1': 'EAP-7.1',
-    '1.6.0.Beta9-redhat-1': 'EAP-7.1'
+    '1.6.0.Beta9-redhat-1': 'EAP-7.1',
+    '1.6.0.Final-redhat-1': 'EAP-7.1'
 }
 
 mod_file = 'META-INF/maven/org.jboss.modules/jboss-modules/pom.properties'

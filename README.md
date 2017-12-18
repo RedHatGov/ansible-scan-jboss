@@ -13,7 +13,7 @@ version from the pom.properties and MANIFEST.MF, respectively, to
 determine which distribution contained the jar.
 
 NB:  This script is up to date through EAP 6.4 CP18, EAP 7.0 CP08,
-     EAP 7.1 Beta, and WildFly 11.0.0.Final
+     EAP 7.1, and WildFly 11.0.0.Final
 
 This has now been updated with a python script in addition to a
 bash script.  The python script correctly works on both Linux and

@@ -9,7 +9,7 @@
 # respectively, to determine which distribution contained the jar
 #
 # NB:  This script is up to date through EAP 6.4 CP18, EAP 7.0 CP08,
-#      EAP 7.1 Beta, and WildFly 11.0.0.Final
+#      EAP 7.1, and WildFly 11.0.0.Final
 
 # abort if error
 set -e
@@ -109,6 +109,7 @@ EAP-7.0: 1.5.3.Final-redhat-1
 EAP-7.0: 1.5.4.Final-redhat-1
 EAP-7.1: 1.6.0.Beta6-redhat-1
 EAP-7.1: 1.6.0.Beta9-redhat-1
+EAP-7.1: 1.6.0.Final-redhat-1
 EOF1
 
   touch $MatchingReleaseFile
