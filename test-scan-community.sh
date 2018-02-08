@@ -15,7 +15,7 @@ do
     pushd $i &> /dev/null
     $BINDIR/scan-community.sh
     popd &> /dev/null
-done | grep 'community found' | wc -l
+done | grep 'community software' | wc -l
 echo
 
 TARGET="$BINDIR/test-distros/enterprise"
@@ -30,6 +30,6 @@ do
     pushd $i &> /dev/null
     $BINDIR/scan-community.sh
     popd &> /dev/null
-done | grep 'enterprise found' | wc -l
+done | grep 'community software' | wc -l
 echo
 
