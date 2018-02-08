@@ -19,6 +19,14 @@ then
 	exit $XCCDF_RESULT_FAIL
 fi
 
+SEARCHROOT=.
+if [[ $XCCDF_VALUE_searchroot ]]
+then
+	SEARCHROOT=$XCCDF_VALUE_searchroot
+fi
+	
+pushd $SEARCHROOT &> /dev/null
+
 TGT=jboss-modules.jar
 METAPATH=META-INF/maven/org.jboss.modules/jboss-modules/pom.properties
 MATCH_COMMUNITY='([0-9]+\.){3}(GA|CR[0-9]+|Final|Beta[0-9]+)$'
@@ -39,6 +47,8 @@ FOUND_run=$($FIND . -type f -name "$TGT" -exec $UNZIP -p {} "$METAPATH" \; | \
     $SED 's/\([0-9]\)  *\([0-9]\)/\1\2/g' | \
     $CUT -d' ' -f1 | \
     $GREP -E "$MATCH_COMMUNITY" | $WC -l)
+
+popd &> /dev/null
 
 if [ $FOUND_jbossmodules -ne 0 -o $FOUND_run -ne 0 ]
 then

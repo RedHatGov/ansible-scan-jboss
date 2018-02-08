@@ -12,9 +12,8 @@ echo -n "   FOUND = "
 
 for i in $(find $TARGET -maxdepth 1 -type d | grep -v 'community$')
 do
-    pushd $i &> /dev/null
+    export XCCDF_VALUE_searchroot=$i
     $BINDIR/scan-community.sh
-    popd &> /dev/null
 done | grep 'community software' | wc -l
 echo
 
@@ -27,9 +26,8 @@ echo -n "   FOUND = "
 
 for i in $(find $TARGET -maxdepth 1 -type d | grep -v 'enterprise$')
 do
-    pushd $i &> /dev/null
+    export XCCDF_VALUE_searchroot=$i
     $BINDIR/scan-community.sh
-    popd &> /dev/null
 done | grep 'community software' | wc -l
 echo
 
