@@ -54,12 +54,12 @@ if [ $FOUND_jbossmodules -ne 0 -o $FOUND_run -ne 0 ]
 then
 	echo "Unsupported JBoss community software has been found at one or more of the following locations:"
         $FIND . -type f \( -name jboss-modules.jar -o -name run.jar \)
-	echo "The JBoss product is available as Open Source; however, the Red""
+	echo "The JBoss product is available as Open Source; however, the Red"
 	echo "Hat vendor provides updates, patches and support for the JBoss"
 	echo "product.  It is imperative that patches and updates be applied to"
 	echo "JBoss in a timely manner as many attacks against JBoss focus on"
 	echo "unpatched systems. It is critical that support be obtained and"
-	echo " made available.  Obtain vendor support from Red Hat."
+	echo "made available.  Obtain vendor support from Red Hat."
 
 	exit $XCCDF_RESULT_FAIL
 fi
