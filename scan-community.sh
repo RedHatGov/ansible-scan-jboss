@@ -20,7 +20,7 @@ then
 fi
 
 SEARCHROOT=.
-if [[ $XCCDF_VALUE_searchroot ]]
+if [[ -d $XCCDF_VALUE_searchroot ]]
 then
 	SEARCHROOT=$XCCDF_VALUE_searchroot
 fi
@@ -48,12 +48,13 @@ FOUND_run=$($FIND . -type f -name "$TGT" -exec $UNZIP -p {} "$METAPATH" \; | \
     $CUT -d' ' -f1 | \
     $GREP -E "$MATCH_COMMUNITY" | $WC -l)
 
-popd &> /dev/null
-
 if [ $FOUND_jbossmodules -ne 0 -o $FOUND_run -ne 0 ]
 then
-	echo "Unsupported JBoss community software has been found at one or more of the following locations:"
+	echo "Unsupported JBoss community software has been found at one or more"
+	echo "of the following locations:"
+        echo
         $FIND . -type f \( -name jboss-modules.jar -o -name run.jar \)
+        echo
 	echo "The JBoss product is available as Open Source; however, the Red"
 	echo "Hat vendor provides updates, patches and support for the JBoss"
 	echo "product.  It is imperative that patches and updates be applied to"
@@ -63,6 +64,8 @@ then
 
 	exit $XCCDF_RESULT_FAIL
 fi
+
+popd &> /dev/null
 
 exit $XCCDF_RESULT_PASS
 
