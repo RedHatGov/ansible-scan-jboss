@@ -7,20 +7,20 @@ TARGET="$BINDIR/test-distros/community"
 
 echo
 echo Community Search Results
-echo "EXPECTED = $(find $TARGET -maxdepth 1 -type d | grep -v 'community$' | wc -l)"
+echo "EXPECTED = $(find $TARGET -maxdepth 1 -type d | grep -v 'community$' | wc -l | sed 's/ //g')"
 echo -n "   FOUND = "
 
 for i in $(find $TARGET -maxdepth 1 -type d | grep -v 'community$')
 do
     export XCCDF_VALUE_searchroot=$i
     $BINDIR/scan-community.sh
-done | grep 'community software' | wc -l
+done | grep 'community software' | wc -l | sed 's/ //g'
 echo
 
 TARGET="$BINDIR/test-distros/enterprise"
 
 echo Enterprise Null Search Results
-echo -n "EXPECTED =        0 (out of "
+echo -n "EXPECTED = 0 (out of "
 echo "$(find $TARGET -maxdepth 1 -type d | grep -v 'enterprise$' | wc -l | sed 's/ //g'))"
 echo -n "   FOUND = "
 
@@ -28,6 +28,6 @@ for i in $(find $TARGET -maxdepth 1 -type d | grep -v 'enterprise$')
 do
     export XCCDF_VALUE_searchroot=$i
     $BINDIR/scan-community.sh
-done | grep 'community software' | wc -l
+done | grep 'community software' | wc -l | sed 's/ //g'
 echo
 
