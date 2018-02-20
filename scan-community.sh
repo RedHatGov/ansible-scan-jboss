@@ -20,9 +20,9 @@ then
 fi
 
 SEARCHROOT=.
-if [[ -d $XCCDF_VALUE_searchroot ]]
+if [[ -d $XCCDF_VALUE_SEARCHROOT ]]
 then
-	SEARCHROOT=$XCCDF_VALUE_searchroot
+	SEARCHROOT=$XCCDF_VALUE_SEARCHROOT
 fi
 	
 pushd $SEARCHROOT &> /dev/null
