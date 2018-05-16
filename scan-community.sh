@@ -11,10 +11,10 @@ WC=/usr/bin/wc
 
 if ! [ -x $CUT -a -x $FIND -a -x $GREP -a -x $SED -a -x $SORT -a -x $TR -a -x $UNZIP -a -x $WC ]
 then
-	echo "JBoss community software checks require that the following commands are installed:"
+	echo "JBoss community software search requires that the following commands are installed:"
         echo "	cut, find, grep, sed, tr, unzip, wc"
-	echo "The unzip command only examines file content without extraction."
-        echo "Please install the above commands and re-run the checks."
+	echo "The unzip command only examines file content without extraction to the local"
+        echo "filesystem. Please install the above commands and re-run the search."
 
 	exit $XCCDF_RESULT_FAIL
 fi
