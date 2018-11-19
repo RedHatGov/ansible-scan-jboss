@@ -1,3 +1,3 @@
-./test-distros/enterprise/jboss-*
-./test-distros/community/wildfly-*
-
+/*
+!/test-distros/community/readme.txt
+!/test-distros/enterprise/readme.txt
