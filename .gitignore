@@ -1,0 +1,3 @@
+./test-distros/enterprise/jboss-*
+./test-distros/community/wildfly-*
+
