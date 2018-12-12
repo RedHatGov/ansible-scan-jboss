@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# substitute the location of these commands within your system.
+# these must be installed for this script to work.
+
 CUT=/usr/bin/cut
 FIND=/usr/bin/find
 GREP=/usr/bin/grep
@@ -12,7 +15,7 @@ WC=/usr/bin/wc
 if ! [ -x $CUT -a -x $FIND -a -x $GREP -a -x $SED -a -x $SORT -a -x $TR -a -x $UNZIP -a -x $WC ]
 then
 	echo "JBoss community software search requires that the following commands are installed:"
-        echo "	cut, find, grep, sed, tr, unzip, wc"
+        echo "	cut, find, grep, sed, sort, tr, unzip, wc"
 	echo "The unzip command only examines file content without extraction to the local"
         echo "filesystem. Please install the above commands and re-run the search."
 
@@ -50,8 +53,8 @@ FOUND_run=$($FIND . -type f -name "$TGT" -exec $UNZIP -p {} "$METAPATH" \; | \
 
 if [ $FOUND_jbossmodules -ne 0 -o $FOUND_run -ne 0 ]
 then
-	echo "Unsupported JBoss community software has been found at one or more"
-	echo "of the following locations:"
+        echo "Unsupported JBoss community open source software has been found at"
+        echo "one or more of the following locations:"
         echo
         $FIND . -type f \( -name jboss-modules.jar -o -name run.jar \)
         echo
