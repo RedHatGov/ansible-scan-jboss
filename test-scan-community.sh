@@ -2,6 +2,7 @@
 
 pushd $(dirname $0) &> /dev/null
 BINDIR=$(pwd)
+popd &> /dev/null
 
 TARGET="$BINDIR/test-distros/community"
 
@@ -14,7 +15,7 @@ for i in $(find $TARGET -maxdepth 1 -type d | grep -v 'community$')
 do
     export XCCDF_VALUE_SEARCHROOT=$i
     $BINDIR/scan-community.sh
-done | grep 'community software' | wc -l | sed 's/ //g'
+done | grep 'Unsupported JBoss community open source software has been found' | wc -l | sed 's/ //g'
 echo
 
 TARGET="$BINDIR/test-distros/enterprise"
@@ -28,6 +29,6 @@ for i in $(find $TARGET -maxdepth 1 -type d | grep -v 'enterprise$')
 do
     export XCCDF_VALUE_SEARCHROOT=$i
     $BINDIR/scan-community.sh
-done | grep 'community software' | wc -l | sed 's/ //g'
+done | grep 'Unsupported JBoss community open source software has been found' | wc -l | sed 's/ //g'
 echo
 
