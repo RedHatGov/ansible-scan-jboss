@@ -18,8 +18,8 @@ set -e
 WorkDir=/tmp
 ClassificationFile=scan-jboss-classifier.txt.$$
 MatchingReleaseFile=scan-jboss-release-list.$$
-SearchRoot=/
-#SearchRoot=/Users/rlucente/demo/wildfly
+#SearchRoot=/
+SearchRoot=/Users/rlucente/development/git/ansible-scan-jboss/test-distros
 
 # get overrides for the above arguments from ansible
 # this is potentially dangerous as arbitrary command execution can occur
@@ -42,6 +42,25 @@ pushd ${WorkDir} 2>&1 > /dev/null
   # there can be multiple versions if jboss-modules.jar was patched
   #
   cat > ${ClassificationFile} <<EOF1
+JBossAS-3: Branch_3_2
+JBossAS-3: JBoss_3_0_5
+JBossAS-3: JBoss_3_0_6
+JBossAS-3: JBoss_3_0_7
+JBossAS-3: JBoss_3_0_8
+JBossAS-3: JBoss_3_2_1
+JBossAS-3: JBoss_3_2_2
+JBossAS-3: JBoss_3_2_2_RC1
+JBossAS-3: JBoss_3_2_2_RC2
+JBossAS-3: JBoss_3_2_2_RC3
+JBossAS-3: JBoss_3_2_2_RC4
+JBossAS-3: JBoss_3_2_3
+JBossAS-3: JBoss_3_2_3_RC1
+JBossAS-3: JBoss_3_2_4
+JBossAS-3: JBoss_3_2_4_RC1
+JBossAS-3: JBoss_3_2_5
+JBossAS-3: JBoss_3_2_6
+JBossAS-3: JBoss_3_2_7
+JBossAS-3: JBoss_3_2_8_SP1
 JBossAS-4: JBoss_4_0_0
 JBossAS-4: JBoss_4_0_1_SP1
 JBossAS-4: JBoss_4_0_2
@@ -52,13 +71,29 @@ JBossAS-4: JBoss_4_2_0_GA
 JBossAS-4: JBoss_4_2_1_GA
 JBossAS-4: JBoss_4_2_2_GA
 JBossAS-4: JBoss_4_2_3_GA
+JBossAS-5: JBoss_5_0_0_Beta2
+JBossAS-5: JBoss_5_0_0_Beta3
+JBossAS-5: JBoss_5_0_0_Beta4
+JBossAS-5: JBoss_5_0_0_CR1
 JBossAS-5: JBoss_5_0_0_GA
 JBossAS-5: JBoss_5_0_1_GA
+JBossAS-5: JBoss_5_1_0_Beta1
+JBossAS-5: JBoss_5_1_0_CR1
 JBossAS-5: JBoss_5_1_0_GA
+JBossAS-6: JBoss_6.0.0.2
+JBossAS-6: JBoss_6.0.0.20
 JBossAS-6: JBoss_6.0.0.Final
 JBossAS-6: JBoss_6.1.0.Final
+JBossAS-6: JBoss_6_0_0_M1
+JBossAS-7: 1.0.0.Beta11
+JBossAS-7: 1.0.0.Beta16
+JBossAS-7: 1.0.0.Beta17
+JBossAS-7: 1.0.0.Beta17
+JBossAS-7: 1.0.0.CR4
 JBossAS-7: 1.0.1.GA
 JBossAS-7: 1.0.2.GA
+JBossAS-7: 1.1.0.CR4
+JBossAS-7: 1.1.0.CR6
 JBossAS-7: 1.1.1.GA
 JBossAS-7: 1.2.0.CR1
 WildFly-8: 1.2.0.Final
@@ -66,6 +101,8 @@ WildFly-8: 1.2.2.Final
 WildFly-8: 1.2.4.Final
 WildFly-8: 1.3.0.Beta3
 WildFly-8: 1.3.0.Final
+WildFly-8: 1.3.3.Final
+WildFly-8: 1.3.3.Final
 WildFly-8: 1.3.3.Final
 WildFly-9: 1.3.4.Final
 WildFly-9: 1.4.2.Final
@@ -79,20 +116,25 @@ WildFly-11: 1.6.0.Beta6
 WildFly-11: 1.6.0.CR2
 WildFly-11: 1.6.0.Final
 WildFly-11: 1.6.1.Final
+WildFly-12: 1.7.0.Final
+WildFly-13: 1.8.5.Final
+WildFly-14: 1.8.6.Final
+WildFly-15: 1.8.7.Final
+WildFly-16: 1.9.0.Final
 EAP-4.2: JBPAPP_4_2_0_GA
 EAP-4.2: JBPAPP_4_2_0_GA_C
 EAP-4.3: JBPAPP_4_3_0_GA
 EAP-4.3: JBPAPP_4_3_0_GA_C
-EAP-5.0.0: JBPAPP_5_0_0_GA
-EAP-5.0.1: JBPAPP_5_0_1
-EAP-5.1.0: JBPAPP_5_1_0
-EAP-5.1.1: JBPAPP_5_1_1	
-EAP-5.1.2: JBPAPP_5_1_2
-EAP-5.2.0: JBPAPP_5_2_0
-EAP-6.0.0: 1.1.2.GA-redhat-1
-EAP-6.0.1: 1.1.3.GA-redhat-1
-EAP-6.1.0: 1.2.0.Final-redhat-1
-EAP-6.1.1: 1.2.2.Final-redhat-1
+EAP-5.0: JBPAPP_5_0_0_GA
+EAP-5.0: JBPAPP_5_0_1
+EAP-5.1: JBPAPP_5_1_0
+EAP-5.1: JBPAPP_5_1_1
+EAP-5.1: JBPAPP_5_1_2
+EAP-5.2: JBPAPP_5_2_0
+EAP-6.0: 1.1.2.GA-redhat-1
+EAP-6.0: 1.1.3.GA-redhat-1
+EAP-6.1: 1.2.0.Final-redhat-1
+EAP-6.1: 1.2.2.Final-redhat-1
 EAP-6.2: 1.3.0.Final-redhat-2
 EAP-6.2: 1.3.3.Final-redhat-1
 EAP-6.3: 1.3.3.Final-redhat-1
@@ -103,6 +145,7 @@ EAP-6.4: 1.3.7.Final-redhat-1
 EAP-6.4: 1.3.8.Final-redhat-1
 EAP-6.4: 1.3.9.Final-redhat-1
 EAP-6.4: 1.3.10.Final-redhat-1
+EAP-6.4: 1.3.11.Final-redhat-1
 EAP-7.0: 1.4.4.Final-redhat-1
 EAP-7.0: 1.5.1.Final-redhat-1
 EAP-7.0: 1.5.3.Final-redhat-1
@@ -110,6 +153,11 @@ EAP-7.0: 1.5.4.Final-redhat-1
 EAP-7.1: 1.6.0.Beta6-redhat-1
 EAP-7.1: 1.6.0.Beta9-redhat-1
 EAP-7.1: 1.6.0.Final-redhat-1
+EAP-7.1: 1.6.4.Final-redhat-1
+EAP-7.1: 1.6.5.Final-redhat-00001
+EAP-7.1: 1.6.7.Final-redhat-00001
+EAP-7.2: 1.8.5.Final-redhat-1
+EAP-7.2: 1.8.6.Final-redhat-00001
 EOF1
 
   touch $MatchingReleaseFile
@@ -150,6 +198,7 @@ EOF1
              sed 's/..*[CS]V[NS]Tag.//g' | cut -d' ' -f1`
     if [ ! -z "${VERSION}" ]
     then
+
       FOUND=`grep ${VERSION}\$ ${ClassificationFile} | cut -d':' -f1`
 
       if [ -z "${FOUND}" ]
