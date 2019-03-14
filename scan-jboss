@@ -18,8 +18,8 @@ set -e
 WorkDir=/tmp
 ClassificationFile=scan-jboss-classifier.txt.$$
 MatchingReleaseFile=scan-jboss-release-list.$$
-#SearchRoot=/
-SearchRoot=/Users/rlucente/development/git/ansible-scan-jboss/test-distros
+SearchRoot=/
+#SearchRoot=/Users/rlucente/development/git/ansible-scan-jboss/test-distros
 
 # get overrides for the above arguments from ansible
 # this is potentially dangerous as arbitrary command execution can occur
