@@ -15,10 +15,3 @@ determine which distribution contained the jar.
 NB:  This script is up to date through EAP 6.4 CP21, EAP 7.0 CP09,
      EAP 7.1 CP06, EAP 7.2.0, and WildFly 16.0.0.Final
 
-This has now been updated with a python script in addition to a
-bash script.  The python script correctly works on both Linux and
-Mac OSX, but it has not yet been tested with Microsoft Windows.
-Also, the python script needs to be updated to match ansible
-expectations for a custom module, per chapter 10 in the ["Ansible:
-Up and Running" book](http://shop.oreilly.com/product/0636920035626.do).
-
