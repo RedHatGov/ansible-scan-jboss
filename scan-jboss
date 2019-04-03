@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #
 # This script finds and classifies JBoss AS instances by specific community and
@@ -29,7 +29,7 @@ then
 fi
 
 # switch to scratch directory
-pushd ${WorkDir} 2>&1 > /dev/null
+pushd ${WorkDir} &> /dev/null
 
   # populate the classifier file used to match the jboss release
   #
@@ -197,8 +197,9 @@ EOF1
       if [ -z "${FOUND}" ]
       then
         FOUND="Unknown-JBoss-Release"
-        echo "$FOUND: $VERSION in $jar"
       fi
+
+      echo "$FOUND: $VERSION in $jar"
 
       for fnd in `echo $FOUND`
       do
@@ -226,6 +227,8 @@ EOF1
         FOUND="Unknown-JBoss-Release"
       fi
 
+      echo "$FOUND: $VERSION in $jar"
+
       for fnd in `echo $FOUND`
       do
         echo ${fnd} >> ${MatchingReleaseFile}
@@ -238,7 +241,7 @@ EOF1
   RELEASE_LIST=`sort -u ${MatchingReleaseFile} | tr '\n' ',' | sed 's/,/, /g' | sed 's/, $//g'`
   rm -f ${ClassificationFile} ${MatchingReleaseFile}
 
-popd 2>&1 > /dev/null
+popd &> /dev/null
 
 echo -n "hostname=`hostname` "
 echo -n "cores=`grep 'cpu cores' /proc/cpuinfo | awk '{s+=$4} END {print s}'` "
