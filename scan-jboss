@@ -227,7 +227,7 @@ EOF1
         FOUND="Unknown-JBoss-Release"
       fi
 
-      echo "$FOUND: $VERSION in $jar"
+      echo "$FOUND: $VERSION in $runjar"
 
       for fnd in `echo $FOUND`
       do
