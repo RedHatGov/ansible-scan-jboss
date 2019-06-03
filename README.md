@@ -12,6 +12,6 @@ for the jboss-modules.jar and run.jar files and then extracts the
 version from the pom.properties and MANIFEST.MF, respectively, to
 determine which distribution contained the jar.
 
-NB:  This script is up to date through EAP 6.4 CP21, EAP 7.0 CP09,
-     EAP 7.1 CP06, EAP 7.2.0, and WildFly 16.0.0.Final
+NB:  This script is up to date through EAP 6.4 CP22, EAP 7.0 CP09,
+     EAP 7.1 CP06, EAP 7.2 CP01, and WildFly 17.0.0.Beta1
 
