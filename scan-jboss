@@ -9,7 +9,7 @@
 # respectively, to determine which distribution contained the jar
 #
 # NB:  This script is up to date through EAP 6.4 CP22, EAP 7.0 CP09,
-#     EAP 7.1 CP06, EAP 7.2 CP02, and WildFly 17.0.0.Final
+#     EAP 7.1 CP06, EAP 7.2 CP03, and WildFly 17.0.1.Final
 
 # abort if error
 set -e
@@ -178,6 +178,7 @@ enterprise/jboss-eap-7.1.6-patch: 1.6.7.Final-redhat-00001
 enterprise/jboss-eap-7.2.0.Beta: 1.8.5.Final-redhat-1
 enterprise/jboss-eap-7.2.0: 1.8.6.Final-redhat-00001
 enterprise/jboss-eap-7.2.2-patch: 1.8.8.Final-redhat-00001
+enterprise/jboss-eap-7.3.0.Beta: 1.9.1.Final-redhat-00001
 enterprise/jbossas-4.3.0.GA_CP10: JBPAPP_4_3_0_GA_CP10
 EOF1
 
