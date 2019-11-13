@@ -22,7 +22,7 @@ TARGET="$BINDIR/test-distros/enterprise"
 
 echo Enterprise Null Search Results
 echo -n "EXPECTED = 0 (out of "
-echo "$(find $TARGET -maxdepth 1 -type d | grep -v 'enterprise$' | wc -l | sed 's/ //g'))"
+echo "$(find $TARGET -maxdepth 1 -type d | grep -v 'enterprise$' | wc -l | sed 's/ //g') possibilities)"
 echo -n "   FOUND = "
 
 for i in $(find $TARGET -maxdepth 1 -type d | grep -v 'enterprise$')
