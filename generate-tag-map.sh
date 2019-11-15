@@ -40,7 +40,7 @@ pushd ${WorkDir} &> /dev/null
   awk '{print $1}' tmp.list | sort -u > tmp.uniq.tag
   for tag in $(cat tmp.uniq.tag)
   do
-    grep $tag tmp.list | awk '{print $2 ": " $1; exit}'
+    grep "$tag " tmp.list | sort -r | awk '{print $2 ": " $1; exit}'
   done | sort
 
   rm -fr tmp.list tmp.uniq.tag
