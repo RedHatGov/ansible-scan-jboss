@@ -13,5 +13,5 @@ version from the pom.properties and MANIFEST.MF, respectively, to
 determine which distribution contained the jar.
 
 NB:  This script is up to date through EAP 6.4 CP22, EAP 7.0 CP09,
-     EAP 7.1 CP06, EAP 7.2 CP07, EAP 7.3, and WildFly 19.0.0.Final
+     EAP 7.1 CP06, EAP 7.2 CP07, EAP 7.3, and WildFly 19.1.0.Final
 
