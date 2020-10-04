@@ -9,7 +9,7 @@
 # respectively, to determine which distribution contained the jar
 #
 # NB:  This script is up to date through EAP 6.4 CP23, EAP 7.0 CP09,
-#     EAP 7.1 CP06, EAP 7.2 CP09, EAP 7.3 CP02, and WildFly 20.0.1.Final
+#     EAP 7.1 CP06, EAP 7.2 CP09, EAP 7.3 CP02, and WildFly 21.0.0.Beta1
 
 # abort if error
 set -e
@@ -122,6 +122,7 @@ community/wildfly-17.0.0.Beta1: 1.9.1.Final
 community/wildfly-19.0.0.Beta1: 1.9.2.Final
 community/wildfly-19.0.0.Beta3: 1.10.0.Final
 community/wildfly-20.0.0.Final: 1.10.1.Final
+community/wildfly-21.0.0.Beta1: 1.10.2.Final
 community/wildfly-8.0.0.Alpha1: 1.2.0.Final
 community/wildfly-8.0.0.Alpha2: 1.2.2.Final
 community/wildfly-8.0.0.Alpha3: 1.2.4.Final
